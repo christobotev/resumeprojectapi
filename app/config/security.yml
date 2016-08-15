@@ -1,0 +1,17 @@
+security:
+    providers:
+        apiKey_userProvider:
+          id: api_key_user_provider
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt|error)|css|images|js)/
+            security: false
+
+
+        rest:
+          pattern: ^/*
+          stateless: true
+          simple_preauth:
+            authenticator: apikey_authenticator
+          provider: apiKey_userProvider

@@ -1,0 +1,37 @@
+services:
+
+  restful_xml_handler:
+    class: Docs\MainBundle\View\XmlViewHandler
+
+  restful_view_handler:
+    parent: fos_rest.view_handler.default
+    calls:
+      - ["registerHandler", [xml, ['@restful_xml_handler', 'createResponse']]]
+
+  api_key_user_provider:
+    class: Docs\MainBundle\Security\ApiKeyUserProvider
+    arguments: ["@doctrine.orm.entity_manager"]
+
+  apikey_authenticator:
+    class:  Docs\MainBundle\Security\ApiKeyAuthenticator
+    public: false
+
+# entity manager persister
+  em.persister:
+        class: Docs\MainBundle\Persistence\Persister
+        arguments: ["@doctrine.orm.entity_manager"]
+
+# form handling services
+  reminder.processor:
+    class: Docs\MainBundle\Reminder\ReminderProcessor
+    arguments: ["@doctrine.orm.entity_manager"]
+
+  note.processor:
+    class: Docs\MainBundle\Note\NoteProcessor
+    arguments: ["@doctrine.orm.entity_manager"]
+
+  note.holder:
+    class: Docs\MainBundle\Note\NoteHolder
+    arguments: ["@service_container"]
+    calls:
+      - [ setContainer, [ '@service_container' ] ]

@@ -1,0 +1,23 @@
+roles:
+  type: rest
+  resource: Docs\MainBundle\Controller\User\RolesController
+
+user:
+  type: rest
+  resource: Docs\MainBundle\Controller\User\UsersController
+
+appointment:
+  type: rest
+  resource: Docs\MainBundle\Controller\Appointment\AppointmentsController
+
+reminder:
+  type: rest
+  resource: Docs\MainBundle\Controller\Reminder\RemindersController
+
+note:
+  type: rest
+  resource: Docs\MainBundle\Controller\Note\NotesController
+
+user-roles:
+  type: rest
+  resource: Docs\MainBundle\Controller\User\UserRolesController
