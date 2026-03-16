@@ -11,7 +11,7 @@
     },
     "repositories" : [{
             "type" : "vcs",
-            "url" : "git@bitbucket.org:h_botev/resumeprojectcommonbundle.git"
+            "url" : "git@github.com:christobotev/resumeprojectcommonbundle.git"
         }
     ],
     "require" : {
